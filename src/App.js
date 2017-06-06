@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Search from './components/Search';
+import Map from './components/Map';
 
 import './App.css';
 import 'react-bootstrap';
@@ -42,10 +43,17 @@ class App extends Component {
   }
 
   render() {
+
+    // Get currentPlace and coords from state
+    // Get lat and lng from coords
+    const { currentPlace, coords, state } = this.state;
+    const { lat, lng } = coords;
+
     return (
       <div className="App">
         <h1 className="heading">Location Manager</h1>
         <Search onSuggest={this.setLocation} />
+        <Map lat={lat} lng={lng} />
       </div>
     );
   } // closes render()
