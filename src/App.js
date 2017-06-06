@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Search from './components/Search';
 
 import './App.css';
 import 'react-bootstrap';
@@ -16,7 +17,11 @@ class App extends Component {
         lat: -4.05,
         lng: 39.666667
       }
-    }
+    };
+
+    // Bind setLocation to the <App> component
+    this.setLocation = this.setLocation.bind(this);
+
   } // closes constructor()
 
   setFavorites() {
@@ -27,19 +32,23 @@ class App extends Component {
     return favorites;
   }
 
+  // Create setLocation callback and setState with place and coords
+  // parameters
+  setLocation(place, coords) {
+    this.setState({
+      currentPlace: place,
+      coords: coords
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="heading">
-          <h2>Welcome to Location Manager</h2>
-        </div>
-        <p className="App-intro">
-          Placeholder for future components...
-        </p>
+        <h1 className="heading">Location Manager</h1>
+        <Search onSuggest={this.setLocation} />
       </div>
     );
   } // closes render()
-
 } // closes Component 
 
 export default App;
