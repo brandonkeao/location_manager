@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from './components/Search';
 import Map from './components/Map';
 import CurrentPlace from './components/CurrentPlace';
+import Placemarks from './components/Placemarks';
 
 import './App.css';
 import 'react-bootstrap';
@@ -125,6 +126,7 @@ class App extends Component {
         <CurrentPlace
           currentPlace={currentPlace}
           coords={coords} onFavoriteToggle={this.toggleFavorite} favorite={isFavorite} />
+        <Placemarks favorites={favorites} activePlaces={currentPlace} onClick={this.setLocation} />
       </div>
     );
   } // closes render()
